@@ -9,6 +9,7 @@ import 'Views/AddingPost/adding_post_view.dart';
 import 'Views/Post/post_list_view.dart';
 import 'Views/Profile/profile_view.dart';
 import 'Views/navigation_bar_view.dart';
+import 'Views/onboarding_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -29,6 +30,11 @@ class MyApp extends StatelessWidget {
       ),
     ];
 
-    return MaterialApp(title: 'Picturn', home: NavigationBarView(listTab));
+    return MaterialApp(
+      title: 'Introduction screen',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: OnBoardingPage(NavigationBarView(listTab)),
+    );
+    // return MaterialApp(title: 'Picturn', home: NavigationBarView(listTab));
   }
 }
