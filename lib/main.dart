@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:picturn/runtime_data.dart';
 import 'package:provider/provider.dart';
-
 import 'Models/profile.dart';
 import 'ViewModels/post_list_view_model.dart';
 import 'ViewModels/profile_view_model.dart';
@@ -10,10 +9,39 @@ import 'Views/Post/post_list_view.dart';
 import 'Views/Profile/profile_view.dart';
 import 'Views/navigation_bar_view.dart';
 import 'Views/onboarding_page.dart';
+import 'my_shared_preferences.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool isFirstRun = true;
+  bool stateUpdated = false;
+
+  _MyAppState() {
+    CheckFirstRun();
+  }
+
+  void CheckFirstRun() {
+    MySharedPreferences.instance
+        .getBooleanValue(MySharedPreferences.keyIsFirstRun)
+        .then(
+          (value) => setState(
+            () {
+              isFirstRun = value;
+              stateUpdated = true;
+              if (isFirstRun)
+                MySharedPreferences.instance
+                    .setBooleanValue(MySharedPreferences.keyIsFirstRun, false);
+            },
+          ),
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
     RuntimeData.currentUserProfileViewModel = ProfileViewModel(Profile('Ilon'));
@@ -31,10 +59,13 @@ class MyApp extends StatelessWidget {
     ];
 
     return MaterialApp(
-      title: 'Introduction screen',
+      title: 'Picturn',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: OnBoardingPage(NavigationBarView(listTab)),
+      home: stateUpdated
+          ? isFirstRun
+              ? OnBoardingPage(NavigationBarView(listTab))
+              : NavigationBarView(listTab)
+          : Container(decoration: BoxDecoration(color: Colors.white)),
     );
-    // return MaterialApp(title: 'Picturn', home: NavigationBarView(listTab));
   }
 }
