@@ -1,104 +1,86 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:picturn/Views/AddingPost/full_size_image_view.dart';
+import 'package:picturn/ViewModels/asset_list_view_model.dart';
+import 'package:picturn/Views/AddingPost/full_size_asset_view.dart';
+import 'package:picturn/Views/AddingPost/asset_gallery_view.dart';
 import 'package:picturn/Views/CustomWidgets/stroke_text.dart';
-import 'package:photo_manager/photo_manager.dart';
+import 'package:provider/provider.dart';
 
-import 'asset _thumbnail.dart';
-
-class AddingPostView extends StatefulWidget {
-  @override
-  _AddingPostView createState() => _AddingPostView();
-}
-
-class _AddingPostView extends State<AddingPostView> {
-  List<AssetEntity> assets = [];
-  int currentIndex;
-
-  @override
-  void initState() {
-    super.initState();
-    this._fetchAssets();
-  }
-
-  _fetchAssets() async {
-    final albums = await PhotoManager.getAssetPathList(onlyAll: true);
-    final recentAlbum = albums.first;
-
-    final recentAssets = await recentAlbum.getAssetListRange(
-      start: 0, // start at index 0
-      end: 1000000, // end at a very big index (to get all the assets)
-    );
-    this.currentIndex = 0;
-
-    setState(() => this.assets = recentAssets);
-  }
-
+class AddingPostView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
 
-    return Stack(
-      children: [
-        //TODO сделать вьюмодель для фул сайз картинки, которую м.б. юзать через Changenotifierprovider, для управления состоянием
-        Container(
-          child: FullSizeImageView(
-            imageFile: this.currentIndex != null
-                ? this.assets[currentIndex].file
-                : null,
+    return ChangeNotifierProvider(
+      create: (context) => AssetListViewModel(),
+      child: Stack(
+        children: [
+          Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.fromLTRB(0, 0, 0, height / 2 - 50),
+            child: FullSizeAssetView(),
           ),
-        ),
-        //
-
-        Container(
-          margin: EdgeInsets.fromLTRB(0, height / 2 - 50, 0, 0),
-          padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-          decoration: BoxDecoration(
+          Container(
+            margin: EdgeInsets.fromLTRB(0, height / 2 - 50, 0, 0),
+            padding: EdgeInsets.fromLTRB(5, 5, 5, 0),
+            alignment: Alignment.topCenter,
             color: Colors.white,
-            border: Border(
-              top: BorderSide(width: 2.0, color: Colors.black),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                StrokeText('Галерея',
+                    strokeColor: Colors.black,
+                    color: Colors.black,
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.w400,
+                    strokeWidth: 0.5),
+                Material(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      IconButton(
+                        splashRadius: 20,
+                        icon: Icon(Icons.camera_alt),
+                        iconSize: 30,
+                        onPressed: () {
+                          print('camera');
+                        },
+                      ),
+                      IconButton(
+                        splashRadius: 20,
+                        icon: Icon(Icons.arrow_upward),
+                        iconSize: 30,
+                        onPressed: () {
+                          print('add post');
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
-          alignment: Alignment.topCenter,
-          child: StrokeText('Галерея',
-              strokeColor: Colors.black,
-              color: Colors.black,
-              fontSize: 30.0,
-              fontWeight: FontWeight.w400,
-              strokeWidth: 0.5),
-        ),
-        Container(
-          margin: EdgeInsets.fromLTRB(0, height / 2, 0, 0),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border(
-              top: BorderSide(width: 2.0, color: Colors.black),
+          Container(
+            margin: EdgeInsets.fromLTRB(0, height / 2, 0, 0),
+            child: AssetGalleryView(),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(0, height / 2 - 50, 0, 0),
+            child: Divider(
+              thickness: 2,
+              height: 0,
             ),
           ),
-          child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount:
-                  MediaQuery.of(context).orientation == Orientation.landscape
-                      ? 8
-                      : 4,
-              crossAxisSpacing: 5,
-              mainAxisSpacing: 5,
-              childAspectRatio: 1, //(1 / 1),
+          Container(
+            margin: EdgeInsets.fromLTRB(0, height / 2, 0, 0),
+            child: Divider(
+              thickness: 2,
+              height: 0,
             ),
-            itemCount: this.assets.length,
-            padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
-            itemBuilder: (_, index) {
-              return InkWell(
-                onTap: () {
-                  if (this.assets[index].type == AssetType.image)
-                    currentIndex = index;
-                },
-                child: AssetThumbnail(asset: this.assets[index]),
-              );
-            },
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -25,18 +25,21 @@ class _NavigationBarView extends State<NavigationBarView> {
         children: listTab,
         index: _currentIndex,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        showUnselectedLabels: false,
-        onTap: (newIndex) => setState(() => _currentIndex = newIndex),
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home_filled), label: 'Лента'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.add_box_outlined), label: 'Добавить'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.account_box), label: 'Профиль')
-        ],
+      bottomNavigationBar: SizedBox(
+        height: 54,
+        child: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          showUnselectedLabels: false,
+          onTap: (newIndex) => setState(() => _currentIndex = newIndex),
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home_filled), label: 'Лента'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.add_box_outlined), label: 'Добавить'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.account_box), label: 'Профиль')
+          ],
+        ),
       ),
     );
   }

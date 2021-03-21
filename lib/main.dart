@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:picturn/Views/AddingPost/adding_post_view.dart';
 import 'package:picturn/runtime_data.dart';
 import 'package:provider/provider.dart';
 
 import 'Models/profile.dart';
 import 'ViewModels/post_list_view_model.dart';
 import 'ViewModels/profile_view_model.dart';
-import 'Views/AddingPost/adding_post_view.dart';
 import 'Views/Post/post_list_view.dart';
 import 'Views/Profile/profile_view.dart';
 import 'Views/navigation_bar_view.dart';
