@@ -19,7 +19,7 @@ class _PostListView extends State<PostListView> {
       postListViewModel = Provider.of<PostListViewModel>(context);
     int postCount = postListViewModel.postViewModels.length;
     return Container(child: ListView.builder(itemBuilder: (context, index) {
-      print(index.toString() + ' index ' + postCount.toString() + ' постов');
+      //print(index.toString() + ' index ' + postCount.toString() + ' постов');
       if (index >= postCount) postListViewModel.fetchPosts();
       if (index < postCount)
         return PostView(postListViewModel.postViewModels[index]);

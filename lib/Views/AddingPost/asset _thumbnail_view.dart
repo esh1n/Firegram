@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_manager/photo_manager.dart';
 
-class AssetThumbnail extends StatelessWidget {
-  const AssetThumbnail({
+class AssetThumbnailView extends StatelessWidget {
+  const AssetThumbnailView({
     Key key,
     @required this.asset,
   }) : super(key: key);
@@ -14,7 +14,6 @@ class AssetThumbnail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // We're using a FutureBuilder since thumbData is a future
     return FutureBuilder<Uint8List>(
       future: asset.thumbData,
       builder: (_, snapshot) {
