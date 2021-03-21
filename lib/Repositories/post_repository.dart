@@ -3,14 +3,9 @@ import 'package:picturn/Models/profile.dart';
 
 class PostRepository {
   var postDataBase = [
-    Post(Profile('John', avatarImagePath: 'res/images/ava1.jpg'),
-        DateTime.now(), 'res/images/1.jpg', 777),
+    Post(Profile('John', avatarImagePath: 'res/images/ava1.jpg'), DateTime.now(), 'res/images/1.jpg', 777),
     Post(Profile('Ilon'), DateTime.now(), 'res/images/2.jpg', 666),
-    Post(
-        Profile('Сергей Александрович', avatarImagePath: 'res/images/ava2.jpg'),
-        DateTime.now(),
-        'res/images/3.jpg',
-        555)
+    Post(Profile('Сергей Александрович', avatarImagePath: 'res/images/ava2.jpg'),  DateTime.now(), 'res/images/3.jpg', 555)
   ];
 
   Future<List<Post>> fetchPosts() async {

@@ -17,8 +17,7 @@ class _AssetGalleryView extends State<AssetGalleryView> {
 
   @override
   Widget build(BuildContext context) {
-    if (this.assetListViewModel == null)
-      this.assetListViewModel =
+    this.assetListViewModel =
           Provider.of<AssetListViewModel>(context, listen: false);
 
     return GridView.builder(
@@ -36,6 +35,7 @@ class _AssetGalleryView extends State<AssetGalleryView> {
           onTap: () {
             if (this.assetListViewModel.assets[index].type == AssetType.image) {
               this.assetListViewModel.currentIndex = index;
+              //print(this.assetListViewModel.assets.toString());
             }
           },
           child:

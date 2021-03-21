@@ -5,10 +5,7 @@ class AssetListViewModel extends ChangeNotifier {
   List<AssetEntity> assets = [];
   int _currentIndex;
 
-  AssetListViewModel() {
-    this.fetchAssets();
-  }
-
+  /*
   fetchAssets() async {
     final albums = await PhotoManager.getAssetPathList(onlyAll: true);
     final recentAlbum = albums.first;
@@ -19,7 +16,7 @@ class AssetListViewModel extends ChangeNotifier {
 
     this.assets = recentAssets;
     this.currentIndex = 0;
-  }
+  }*/
 
   set currentIndex(int value) {
     this._currentIndex = value;
