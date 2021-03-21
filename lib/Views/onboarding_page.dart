@@ -53,12 +53,17 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         ),
         PageViewModel(
           title: "Like pictures!",
-          bodyWidget: Row(
+          bodyWidget: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text("Click on ", style: bodyStyle),
-              Icon(Icons.favorite_outlined, color: Colors.red),
-              Text(" to like other Pictern users.", style: bodyStyle),
+            children: <Widget>[
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text("Click on ", style: bodyStyle),
+                    Icon(Icons.favorite_outlined, color: Colors.red),
+                    Text(" to like pictures,", style: bodyStyle),
+                  ]),
+              Text("posted by other Picturn users", style: bodyStyle),
             ],
           ),
           image: _buildImage('intro2'),
@@ -66,8 +71,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         ),
         PageViewModel(
           title: "Save pictures!",
-          body:
-          "You can download the most interesting photos on your device.",
+          body: "You can download the most interesting photos on your device.",
           image: _buildImage('intro3'),
           decoration: pageDecoration,
         ),
