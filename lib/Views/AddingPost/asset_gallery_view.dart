@@ -5,26 +5,26 @@ import 'package:provider/provider.dart';
 
 import 'asset _thumbnail_view.dart';
 
-class AssetGalleryView extends StatefulWidget{
+class AssetGalleryView extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _AssetGalleryView();
   }
-
 }
 
-class _AssetGalleryView extends State<AssetGalleryView>{
+class _AssetGalleryView extends State<AssetGalleryView> {
   AssetListViewModel assetListViewModel;
 
   @override
   Widget build(BuildContext context) {
     if (this.assetListViewModel == null)
-      this.assetListViewModel = Provider.of<AssetListViewModel>(context, listen: false);
+      this.assetListViewModel =
+          Provider.of<AssetListViewModel>(context, listen: false);
 
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount:
-        MediaQuery.of(context).orientation == Orientation.landscape ? 8 : 4,
+            MediaQuery.of(context).orientation == Orientation.landscape ? 8 : 4,
         crossAxisSpacing: 5,
         mainAxisSpacing: 5,
         childAspectRatio: 1, //(1 / 1),
@@ -38,10 +38,10 @@ class _AssetGalleryView extends State<AssetGalleryView>{
               this.assetListViewModel.currentIndex = index;
             }
           },
-          child: AssetThumbnailView(asset: this.assetListViewModel.assets[index]),
+          child:
+              AssetThumbnailView(asset: this.assetListViewModel.assets[index], itemNumber: index,),
         );
       },
     );
   }
-
 }
