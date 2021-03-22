@@ -2,18 +2,18 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:picturn/ViewModels/asset_list_view_model.dart';
+import 'package:picturn/ViewModels/gallery_list_view_model.dart';
 import 'package:provider/provider.dart';
 
-class FullSizeAssetView extends StatelessWidget {
+class FullSizeImageAssetView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<AssetListViewModel>(
-      builder: (context, AssetListViewModel, _) {
-        return AssetListViewModel.currentIndex != null
+    return Consumer<GalleryListViewModel>(
+      builder: (context, galleryListViewModel, _) {
+        return galleryListViewModel.currentIndex != null
             ? FutureBuilder<File>(
-                future: AssetListViewModel
-                    .assets[AssetListViewModel.currentIndex].file,
+                future: galleryListViewModel
+                    .imageAssets[galleryListViewModel.currentIndex].file,
                 builder: (_, snapshot) {
                   final file = snapshot.data;
                   if (file == null)
