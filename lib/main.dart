@@ -23,10 +23,10 @@ class _MyAppState extends State<MyApp> {
   bool stateUpdated = false;
 
   _MyAppState() {
-    CheckFirstRun();
+    checkFirstRun();
   }
 
-  void CheckFirstRun() {
+  void checkFirstRun() {
     MySharedPreferences.instance
         .getBooleanValue(MySharedPreferences.keyIsFirstRun)
         .then(
