@@ -27,7 +27,7 @@ class ProfileView extends StatelessWidget {
                     (BuildContext context, bool innerBoxIsScrolled) {
                   return <Widget>[
                     SliverPersistentHeader(
-                      delegate: ProfileViewHedaer(
+                      delegate: ProfileViewHeader(
                         this.profileViewModel,
                         minExtent: 250.0,
                         maxExtent: 250.0,

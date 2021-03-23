@@ -6,12 +6,14 @@ import 'package:flutter/rendering.dart';
 import 'package:picturn/ViewModels/profile_view_model.dart';
 import 'package:picturn/Views/Profile/profile_title_view.dart';
 
-class ProfileViewHedaer implements SliverPersistentHeaderDelegate {
+import 'profile_photo_edit_button.dart';
+
+class ProfileViewHeader implements SliverPersistentHeaderDelegate {
   ProfileViewModel profileViewModel;
   final double maxExtent;
   final double minExtent;
 
-  ProfileViewHedaer(this.profileViewModel,
+  ProfileViewHeader(this.profileViewModel,
       {this.minExtent, @required this.maxExtent});
 
   @override
@@ -35,6 +37,7 @@ class ProfileViewHedaer implements SliverPersistentHeaderDelegate {
             ),
           ),
         ),
+        ProfilePhotoEditButton(this.profileViewModel),
         Positioned(
           left: 24.0,
           right: 16.0,
@@ -70,3 +73,5 @@ class ProfileViewHedaer implements SliverPersistentHeaderDelegate {
   @override
   TickerProvider get vsync => null;
 }
+
+

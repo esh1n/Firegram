@@ -9,7 +9,7 @@ class ProfileViewModel {
       this.profile.avatarImagePath ?? 'res/images/no_avatar.png';
 
   bool equalProfiles(Profile profile) {
-    return (this.profile.nickName == profile.nickName) ? true : false;
+    return this.profile.nickName == profile.nickName;
   }
 
   int fetchCountPosts() {
