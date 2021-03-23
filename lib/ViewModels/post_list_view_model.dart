@@ -30,4 +30,9 @@ class PostListViewModel extends ChangeNotifier {
         results.map((item) => PostViewModel(post: item)).toList();
     notifyListeners();
   }
+
+  refreshPosts() {
+    this.postViewModels.clear();
+    notifyListeners();
+  }
 }

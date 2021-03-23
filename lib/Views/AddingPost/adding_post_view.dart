@@ -136,12 +136,11 @@ class _AddingPostView extends State<AddingPostView> {
 
     String albumName = 'PicturnMedia';
     File tmpFile = File(imageFile.path);
-
     print('полный путь картинки:   ' + tmpFile.path.toString());
     print('перед сохранением count '+this.galleryListViewModel.imageAssets.length.toString());
     final saveResult = await GallerySaver.saveImage(tmpFile.path, albumName: albumName);
     if (saveResult == true) {
-      await Future.delayed(Duration(seconds: 4), () => this._fetchImageGalleryAssets());
+      await Future.delayed(Duration(seconds: 5), () => this._fetchImageGalleryAssets());
     }
   }
 
