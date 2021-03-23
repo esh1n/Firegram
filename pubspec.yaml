@@ -32,12 +32,13 @@ dependencies:
   provider: ^4.0.0
   darq: ^0.5.1
   flare_flutter:
-  image_picker: ^0.7.3
+  image_picker: ^0.6.7+22
   photo_manager: ^1.0.2
   introduction_screen: ^2.0.0
   shared_preferences: ^2.0.5
-  path_provider: ^2.0.1
+  path_provider:
   path: ^1.8.0
+  gallery_saver: ^2.0.3
 
 dev_dependencies:
   flutter_test:
