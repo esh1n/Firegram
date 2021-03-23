@@ -1,7 +1,9 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gallery_saver/gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -27,7 +29,7 @@ class _AddingPostView extends State<AddingPostView> {
   @override
   void initState() {
     this.galleryListViewModel = GalleryListViewModel();
-    this._fetchAssets();
+    this._fetchImageGalleryAssets();
   }
 
   @override
@@ -77,7 +79,8 @@ class _AddingPostView extends State<AddingPostView> {
                         iconSize: 30,
                         onPressed: () {
                           print('add post');
-                          setState((){});
+                          this._fetchImageGalleryAssets();
+                          //print(this.galleryListViewModel.imageAssets.toString());
                         },
                       ),
                     ],
@@ -109,7 +112,7 @@ class _AddingPostView extends State<AddingPostView> {
     );
   }
 
-  _fetchAssets() async {
+  _fetchImageGalleryAssets() async {
     final albums = await PhotoManager.getAssetPathList(onlyAll: true);
     final recentAlbum = albums.first;
 
@@ -119,9 +122,10 @@ class _AddingPostView extends State<AddingPostView> {
     );
     this.galleryListViewModel.currentIndex = 0;
 
-    setState(() => this.galleryListViewModel.imageAssets = recentAssets
+    setState(() { this.galleryListViewModel.imageAssets = recentAssets
         .where((element) => element.type == AssetType.image)
-        .toList());
+        .toList();
+    print('fetch count '+this.galleryListViewModel.imageAssets.length.toString());});
   }
 
   getCameraImage() async {
@@ -130,13 +134,16 @@ class _AddingPostView extends State<AddingPostView> {
 
     if (imageFile == null) return;
 
-    setState(() {});
+    String albumName = 'PicturnMedia';
+    File tmpFile = File(imageFile.path);
 
-    File _imageFile = File(imageFile.path);
-    final appDir = await getApplicationDocumentsDirectory();
-    print('111 папка приложения с данными:     ' + appDir.path.toString());
-    final fileName = basename(_imageFile.path);
-    print('222: имя картинки    ' + fileName.toString());
-    final savedImage = await _imageFile.copy('${appDir.path}/$fileName');
+    print('полный путь картинки:   ' + tmpFile.path.toString());
+    print('перед сохранением count '+this.galleryListViewModel.imageAssets.length.toString());
+    final saveResult = await GallerySaver.saveImage(tmpFile.path, albumName: albumName);
+    if (saveResult == true) {
+      await Future.delayed(Duration(seconds: 4), () => this._fetchImageGalleryAssets());
+    }
   }
+
+
 }
