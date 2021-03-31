@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:picturn/ViewModels/post_list_view_model.dart';
-import 'package:provider/provider.dart';
 
 class NavigationBarView extends StatefulWidget {
   List<Widget> listTab;

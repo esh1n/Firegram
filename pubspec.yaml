@@ -44,6 +44,25 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  flutter_native_splash: ^1.1.5+1
+
+flutter_native_splash:
+  color: "#5c9fcf"
+  image: res/images/picturn_logo.png
+  android: true
+  ios: true
+  #add: flutter pub run flutter_native_splash:create
+  #remove: flutter pub run flutter_native_splash:remove
+
+  # color: "#5c9fcf"
+  # image: res/images/picturn_splash_screen.png
+  # color_dark: "#050629"
+  # image_dark: res/images/picturn_splash_screen.png
+  # android: true
+  # ios: true
+  # android_gravity: fill
+  # ios_content_mode: scaleAspectFill
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
