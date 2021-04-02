@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
@@ -31,7 +32,8 @@ class ImageAssetThumbnailView extends StatelessWidget {
                 ? Image.memory(
                     bytes,
                     fit: BoxFit.cover,
-                    color: Color.fromRGBO(50, 10, 75, 0.9),
+                    //color: Color.fromRGBO(50, 10, 75, 0.9),
+                    color :Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(0.9),
                     colorBlendMode: BlendMode.modulate,
                   )
                 : Image.memory(bytes, fit: BoxFit.cover);

@@ -5,16 +5,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:picturn/ViewModels/gallery_list_view_model.dart';
 import 'package:picturn/Views/AddingPost/full_size_image_asset_view.dart';
 import 'package:picturn/Views/AddingPost/image_asset_gallery_view.dart';
-import 'package:picturn/Views/Camera/camera_view.dart';
 import 'package:picturn/Views/CustomWidgets/stroke_text.dart';
 import 'package:provider/provider.dart';
-import 'package:path/path.dart' as p;
 
 class AddingPostView extends StatefulWidget {
   @override
@@ -136,12 +132,11 @@ class _AddingPostView extends State<AddingPostView> {
 
     String albumName = 'PicturnMedia';
     File tmpFile = File(imageFile.path);
-
     print('полный путь картинки:   ' + tmpFile.path.toString());
     print('перед сохранением count '+this.galleryListViewModel.imageAssets.length.toString());
     final saveResult = await GallerySaver.saveImage(tmpFile.path, albumName: albumName);
     if (saveResult == true) {
-      await Future.delayed(Duration(seconds: 4), () => this._fetchImageGalleryAssets());
+      await Future.delayed(Duration(seconds: 5), () => this._fetchImageGalleryAssets());
     }
   }
 
