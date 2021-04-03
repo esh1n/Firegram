@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "906828415258",
+    "firebase_url": "https://picturn-b7c9e-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "picturn-b7c9e",
     "storage_bucket": "picturn-b7c9e.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "906828415258-uof5blvk5ejbt3vacksep5olge3t4hus.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zakharov.picturn",
+            "certificate_hash": "48e5babea8b3d24fc5359d6624f7d9e108c79d95"
+          }
+        },
         {
           "client_id": "906828415258-0q7erslcf8o5hm3a3f37s16opjllbpfe.apps.googleusercontent.com",
           "client_type": 3

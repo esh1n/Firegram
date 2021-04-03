@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:picturn/Views/AddingPost/adding_post_view.dart';
+import 'package:picturn/Views/login_view.dart';
 import 'package:picturn/runtime_data.dart';
 import 'package:provider/provider.dart';
 import 'Models/profile.dart';
@@ -102,9 +103,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Picturn',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: isFirstRun
-          ? OnBoardingPage(NavigationBarView(listTab))
-          : NavigationBarView(listTab),
+      home: LoginPage()
+      // home: isFirstRun
+      //     ? OnBoardingPage(NavigationBarView(listTab))
+      //     : NavigationBarView(listTab),
     );
   }
 }
