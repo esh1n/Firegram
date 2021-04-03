@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "906828415258",
+    "project_id": "picturn-b7c9e",
+    "storage_bucket": "picturn-b7c9e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906828415258:android:53f476dcae9d7c9135eca3",
+        "android_client_info": {
+          "package_name": "com.zakharov.picturn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "906828415258-0q7erslcf8o5hm3a3f37s16opjllbpfe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj_9Iqehu5LMo414dU0kCfVLyPcupEs9s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "906828415258-0q7erslcf8o5hm3a3f37s16opjllbpfe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
