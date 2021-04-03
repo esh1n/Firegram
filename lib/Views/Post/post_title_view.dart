@@ -32,6 +32,7 @@ class PostTitleView extends StatelessWidget {
                               this.postViewModel.getProfile))));
                 },
                 child: CircleAvatar(
+                  radius: 20.0,
                   backgroundColor: Colors.black,
                   backgroundImage:
                       AssetImage(this.postViewModel.getAvatarImagePath),

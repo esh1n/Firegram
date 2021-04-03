@@ -20,7 +20,7 @@ class _LikeView extends State<LikeView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.only(left: 20, top: 5, right: 5, bottom: 15),
+        padding: EdgeInsets.only(left: 15, top: 5, right: 5, bottom: 7),
         child: Row(
           children: <Widget>[
             IconButton(
@@ -35,7 +35,7 @@ class _LikeView extends State<LikeView> {
                   });
                 }),
             Padding(
-                padding: EdgeInsets.only(left: 10, top: 0, right: 0, bottom: 0),
+                padding: EdgeInsets.only(left: 6, top: 0, right: 0, bottom: 0),
                 child: Text('Нравится:  ' +
                     this.postViewModel.getLikesCount.toString()))
           ],

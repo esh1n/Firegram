@@ -1,21 +1,41 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:picturn/ViewModels/post_list_view_model.dart';
+import 'package:picturn/ViewModels/profile_view_model.dart';
+import 'package:provider/provider.dart';
+
+import '../runtime_data.dart';
+import 'AddingPost/adding_post_view.dart';
+import 'Post/post_list_view.dart';
+import 'Profile/profile_view.dart';
 
 class NavigationBarView extends StatefulWidget {
-  List<Widget> listTab;
+  //List<Widget> listTab;
 
-  NavigationBarView(this.listTab);
+  //NavigationBarView(this.listTab);
 
   State<StatefulWidget> createState() {
-    return _NavigationBarView(this.listTab);
+    //return _NavigationBarView(this.listTab);
+    return _NavigationBarView();
   }
 }
 
 class _NavigationBarView extends State<NavigationBarView> {
-  int _currentIndex = 0;
-  List<Widget> listTab;
+  List<Widget> listTab = [
+    ChangeNotifierProvider(
+      create: (context) => PostListViewModel(PostListType.all),
+      child: PostListView(),
+    ),
+    AddingPostView(),
+    ProfileView(
+      ProfileViewModel(RuntimeData.currentUserProfileViewModel.profile),
+    ),
+  ];
 
-  _NavigationBarView(this.listTab);
+  int _currentIndex = 0;
+  //List<Widget> listTab;
+
+  //_NavigationBarView(this.listTab);
 
   @override
   Widget build(BuildContext context) {

@@ -79,16 +79,7 @@ class _MyAppState extends State<MyApp> {
     RuntimeData.currentUserProfileViewModel = ProfileViewModel(Profile('Ilon'));
     RuntimeData.currentOpenProfileViewModel = ProfileViewModel(null);
 
-    List<Widget> listTab = [
-      ChangeNotifierProvider(
-        create: (context) => PostListViewModel(PostListType.all),
-        child: PostListView(),
-      ),
-      AddingPostView(),
-      ProfileView(
-        ProfileViewModel(RuntimeData.currentUserProfileViewModel.profile),
-      ),
-    ];
+
 
     // Show error message if initialization failed
     if (_error) {
@@ -103,7 +94,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Picturn',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: LoginPage()
+      home: NavigationBarView(),
+      // home: LoginPage()
       // home: isFirstRun
       //     ? OnBoardingPage(NavigationBarView(listTab))
       //     : NavigationBarView(listTab),
