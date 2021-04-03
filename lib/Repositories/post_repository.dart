@@ -1,5 +1,6 @@
 import 'package:picturn/Models/post.dart';
 import 'package:picturn/Models/profile.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class PostRepository {
   var postDataBase = [
@@ -8,22 +9,28 @@ class PostRepository {
     Post(Profile('Сергей Александрович', avatarImagePath: 'res/images/ava2.jpg'),  DateTime.now(), 'res/images/3.jpg', 555)
   ];
 
+  Future<String> downloadURLExample() async {
+    return await firebase_storage.FirebaseStorage.instance
+        .ref('images/4.jpg')
+        .getDownloadURL();
+  }
+
   Future<List<Post>> fetchPosts() async {
     //TODO get запрос получения всех постов
     return await Future.delayed(Duration(seconds: 0), () => postDataBase);
+
+    // return await Future.delayed(Duration(seconds: 0), () => downloadURLExample().then((value) => [
+    //   Post(Profile('John', avatarImagePath: 'res/images/ava1.jpg'), DateTime.now(), value, 777),
+    // ]));
   }
 
   Future<List<Post>> fetchProfilePosts(String nickName) async {
-    // var result = [
-    //   Post(Profile('Ilon'), DateTime.now(), 'res/images/2.jpg', 666),
-    // ];
     //TODO get запрос получения постов пользователя
     return await Future.delayed(
         Duration(seconds: 0),
         () => postDataBase
             .where((element) => element.profile.nickName == nickName)
             .toList());
-    // return postDataBase.where((element) => element.profile.nickName == nickName).toList();
   }
 
   Future<bool> sendPostLikes(
