@@ -39,6 +39,7 @@ dependencies:
   path_provider: ^1.2.0
   path: ^1.8.0
   gallery_saver: ^2.0.3
+  date_format: ^2.0.2
   firebase_core: ^0.7.0
   firebase_storage: ^7.0.0
   firebase_database: ^6.0.0

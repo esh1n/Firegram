@@ -7,6 +7,17 @@ class PostViewModel extends ChangeNotifier {
 
   PostViewModel({this.post});
 
+  bool trySetLike() {
+    this.post.isLiked = !this.post.isLiked;
+    this.post.isLiked ? this.post.likesCount++ : this.post.likesCount--;
+    return this.post.isLiked;
+  }
+
+  //TODO
+  Future<void> updateLike() async {
+    notifyListeners();
+  }
+
   String get getImagePath => this.post.imagePath;
 
   String get getAuthor => this.post.profile.nickName;
@@ -20,14 +31,4 @@ class PostViewModel extends ChangeNotifier {
 
   int get getLikesCount => this.post.likesCount;
 
-  bool trySetLike() {
-    this.post.isLiked = !this.post.isLiked;
-    this.post.isLiked ? this.post.likesCount++ : this.post.likesCount--;
-    return this.post.isLiked;
-  }
-
-  //TODO
-  Future<void> updateLike() async {
-    notifyListeners();
-  }
 }

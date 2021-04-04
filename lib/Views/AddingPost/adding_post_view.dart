@@ -1,11 +1,15 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:photo_manager/photo_manager.dart';
+import 'package:picturn/Models/post.dart';
+import 'package:picturn/Models/profile.dart';
+import 'package:picturn/Repositories/database.dart';
 import 'package:picturn/ViewModels/gallery_list_view_model.dart';
 import 'package:picturn/Views/AddingPost/full_size_image_asset_view.dart';
 import 'package:picturn/Views/AddingPost/image_asset_gallery_view.dart';
@@ -75,7 +79,10 @@ class _AddingPostView extends State<AddingPostView> {
                         iconSize: 30,
                         onPressed: () {
                           print('add post');
-                          this._fetchImageGalleryAssets();
+                          Post post = Post(Profile('John', avatarImagePath: 'res/images/ava1.jpg'), DateTime.now(), 'res/images/1.jpg', 777);
+                          post.setId(savePost(post));
+
+                          //this._fetchImageGalleryAssets();
                           //print(this.galleryListViewModel.imageAssets.toString());
                         },
                       ),

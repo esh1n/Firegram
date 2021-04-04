@@ -1,10 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:picturn/Views/AddingPost/adding_post_view.dart';
 import 'package:picturn/Views/login_view.dart';
 import 'package:picturn/runtime_data.dart';
 import 'package:provider/provider.dart';
+import 'Models/post.dart';
 import 'Models/profile.dart';
+import 'Repositories/database.dart';
 import 'ViewModels/post_list_view_model.dart';
 import 'ViewModels/profile_view_model.dart';
 import 'Views/CustomWidgets/secondary_splash.dart';
@@ -79,8 +82,6 @@ class _MyAppState extends State<MyApp> {
     RuntimeData.currentUserProfileViewModel = ProfileViewModel(Profile('Ilon'));
     RuntimeData.currentOpenProfileViewModel = ProfileViewModel(null);
 
-
-
     // Show error message if initialization failed
     if (_error) {
       return Container(decoration: BoxDecoration(color: Colors.red));
@@ -94,8 +95,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Picturn',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: NavigationBarView(),
-      // home: LoginPage()
+      //home: NavigationBarView(),
+
+       home: LoginPage()
+
       // home: isFirstRun
       //     ? OnBoardingPage(NavigationBarView(listTab))
       //     : NavigationBarView(listTab),

@@ -33,6 +33,7 @@ class _NavigationBarView extends State<NavigationBarView> {
   ];
 
   int _currentIndex = 0;
+
   //List<Widget> listTab;
 
   //_NavigationBarView(this.listTab);
@@ -53,11 +54,23 @@ class _NavigationBarView extends State<NavigationBarView> {
           onTap: (newIndex) => setState(() => _currentIndex = newIndex),
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.home_filled), label: 'Лента'),
+                icon: Icon(
+                  Icons.home_filled,
+                  size: 20,
+                ),
+                label: 'Лента'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.add_box_outlined), label: 'Добавить'),
+                icon: Icon(
+                  Icons.add_box_outlined,
+                  size: 20,
+                ),
+                label: 'Добавить'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.account_box), label: 'Профиль')
+                icon: Icon(
+                  Icons.account_box,
+                  size: 20,
+                ),
+                label: 'Профиль')
           ],
         ),
       ),

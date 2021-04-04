@@ -1,3 +1,4 @@
+import 'package:date_format/date_format.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:picturn/ViewModels/post_view_model.dart';
@@ -43,11 +44,8 @@ class PostTitleView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(this.postViewModel.getAuthor),
-                    Text(this.postViewModel.getDate.day.toString() +
-                        "." +
-                        this.postViewModel.getDate.month.toString() +
-                        "." +
-                        this.postViewModel.getDate.year.toString())
+                    Text(formatDate(
+                        this.postViewModel.getDate, [yyyy, '-', mm, '-', dd]))
                   ],
                 ))
           ],

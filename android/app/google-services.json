@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "906828415258",
-    "firebase_url": "https://picturn-b7c9e-default-rtdb.europe-west1.firebasedatabase.app",
-    "project_id": "picturn-b7c9e",
-    "storage_bucket": "picturn-b7c9e.appspot.com"
+    "project_number": "502235601567",
+    "firebase_url": "https://picturn-f08d6-default-rtdb.firebaseio.com",
+    "project_id": "picturn-f08d6",
+    "storage_bucket": "picturn-f08d6.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:906828415258:android:53f476dcae9d7c9135eca3",
+        "mobilesdk_app_id": "1:502235601567:android:389c0df5e2db1f0228e0aa",
         "android_client_info": {
           "package_name": "com.zakharov.picturn"
         }
       },
       "oauth_client": [
         {
-          "client_id": "906828415258-uof5blvk5ejbt3vacksep5olge3t4hus.apps.googleusercontent.com",
+          "client_id": "502235601567-2b29bib16m0c30k2gc1lu1ifmalp628m.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.zakharov.picturn",
@@ -23,20 +23,20 @@
           }
         },
         {
-          "client_id": "906828415258-0q7erslcf8o5hm3a3f37s16opjllbpfe.apps.googleusercontent.com",
+          "client_id": "502235601567-3s19nauusa9gps6nq1m24jeom04e3b2d.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDj_9Iqehu5LMo414dU0kCfVLyPcupEs9s"
+          "current_key": "AIzaSyATR__wsvsBLQ_IgWDc7emHsh7LoFW6hFE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "906828415258-0q7erslcf8o5hm3a3f37s16opjllbpfe.apps.googleusercontent.com",
+              "client_id": "502235601567-3s19nauusa9gps6nq1m24jeom04e3b2d.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
