@@ -2,7 +2,11 @@ import 'package:picturn/Models/post.dart';
 import 'package:picturn/Models/profile.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
+import 'database_provider.dart';
+
 class PostRepository {
+  var databaseProvider = DatabaseProvider();
+
   var postDataBase = [
     Post(Profile('John', avatarImagePath: 'res/images/ava1.jpg'), DateTime.now(), 'res/images/1.jpg', 777),
     Post(Profile('Ilon'), DateTime.now(), 'res/images/2.jpg', 666),
@@ -15,9 +19,14 @@ class PostRepository {
         .getDownloadURL();
   }
 
+  Future<void> savePost(Post post) async {
+    this.databaseProvider.savePost(post);
+  }
+
   Future<List<Post>> fetchPosts() async {
-    //TODO get запрос получения всех постов
-    return await Future.delayed(Duration(seconds: 0), () => postDataBase);
+    return await this.databaseProvider.getAllPosts();
+
+    //return await Future.delayed(Duration(seconds: 0), () => postDataBase);
 
     // return await Future.delayed(Duration(seconds: 0), () => downloadURLExample().then((value) => [
     //   Post(Profile('John', avatarImagePath: 'res/images/ava1.jpg'), DateTime.now(), value, 777),

@@ -9,8 +9,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:picturn/Models/post.dart';
 import 'package:picturn/Models/profile.dart';
-import 'package:picturn/Repositories/database.dart';
+import 'package:picturn/ViewModels/adding_post_view_model.dart';
 import 'package:picturn/ViewModels/gallery_list_view_model.dart';
+import 'package:picturn/ViewModels/post_view_model.dart';
 import 'package:picturn/Views/AddingPost/full_size_image_asset_view.dart';
 import 'package:picturn/Views/AddingPost/image_asset_gallery_view.dart';
 import 'package:picturn/Views/CustomWidgets/stroke_text.dart';
@@ -25,6 +26,8 @@ class AddingPostView extends StatefulWidget {
 
 class _AddingPostView extends State<AddingPostView> {
   GalleryListViewModel galleryListViewModel;
+  final AddingPostViewModel addingPostViewModel = AddingPostViewModel();
+
 
   @override
   void initState() {
@@ -80,7 +83,11 @@ class _AddingPostView extends State<AddingPostView> {
                         onPressed: () {
                           print('add post');
                           Post post = Post(Profile('John', avatarImagePath: 'res/images/ava1.jpg'), DateTime.now(), 'res/images/1.jpg', 777);
-                          post.setId(savePost(post));
+                          Post post2 = Post(Profile('Ilon'), DateTime.now(), 'res/images/2.jpg', 666);
+                          Post post3 = Post(Profile('Сергей Александрович', avatarImagePath: 'res/images/ava2.jpg'),  DateTime.now(), 'res/images/3.jpg', 555);
+                          this.addingPostViewModel.addPost(post);
+                          this.addingPostViewModel.addPost(post2);
+                          this.addingPostViewModel.addPost(post3);
 
                           //this._fetchImageGalleryAssets();
                           //print(this.galleryListViewModel.imageAssets.toString());

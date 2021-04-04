@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:picturn/Models/post.dart';
 import 'package:picturn/Models/profile.dart';
+import 'package:picturn/Repositories/post_repository.dart';
 
 class PostViewModel extends ChangeNotifier {
   final Post post;
@@ -27,8 +28,9 @@ class PostViewModel extends ChangeNotifier {
   Profile get getProfile => this.post.profile;
 
   String get getAvatarImagePath =>
-      this.post.profile.avatarImagePath ?? 'res/images/no_avatar.png';
+      (this.post.profile.avatarImagePath == null ||  this.post.profile.avatarImagePath.isEmpty)
+      ? 'res/images/no_avatar.png'
+      : this.post.profile.avatarImagePath;
 
   int get getLikesCount => this.post.likesCount;
-
 }

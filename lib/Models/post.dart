@@ -6,6 +6,7 @@ class Post {
   final String imagePath;
   final Profile profile;
   final DateTime date;
+
   bool isLiked;
   int likesCount;
 
@@ -24,13 +25,13 @@ class Post {
       'imagePath': this.imagePath,
       'nickName': this.profile.nickName,
       'avatarImagePath': this.profile.avatarImagePath,
-      'date': formatDate(this.date, [yyyy, '.', mm, '.', dd]),
+      'date': formatDate(this.date, [yyyy, '-', mm, '-', dd]),
       'profileLiked': this.profileLiked.toList(),
     };
   }
 
 
-  Post createPost(record) {
+  static Post createPost(record) {
     Map<String, dynamic> attributes = {
       'imagePath': '',
       'nickName': '',
@@ -41,6 +42,7 @@ class Post {
 
     record.forEach((key, value) => {attributes[key] = value});
 
+    print(attributes['date'] + '     hui');
     Post post = new Post(
         Profile(attributes['nickName'],
             avatarImagePath: attributes['avatarImagePath']),
