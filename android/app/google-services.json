@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "502235601567-g9dpukhabe6pgvldoij7bm01b247ubpu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zakharov.picturn",
+            "certificate_hash": "c28e72ad990ff078210b2d7f51be505c1d0e2144"
+          }
+        },
+        {
           "client_id": "502235601567-3s19nauusa9gps6nq1m24jeom04e3b2d.apps.googleusercontent.com",
           "client_type": 3
         }
