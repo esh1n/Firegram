@@ -42,7 +42,7 @@ class Post {
 
     record.forEach((key, value) => {attributes[key] = value});
 
-    print(attributes['date'] + '     hui');
+    print(attributes['date']);
     Post post = new Post(
         Profile(attributes['nickName'],
             avatarImagePath: attributes['avatarImagePath']),
