@@ -1,50 +1,41 @@
 {
   "project_info": {
-    "project_number": "502235601567",
-    "firebase_url": "https://picturn-f08d6-default-rtdb.firebaseio.com",
-    "project_id": "picturn-f08d6",
-    "storage_bucket": "picturn-f08d6.appspot.com"
+    "project_number": "534128897525",
+    "project_id": "pleasurepicture-76daa",
+    "storage_bucket": "pleasurepicture-76daa.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:502235601567:android:389c0df5e2db1f0228e0aa",
+        "mobilesdk_app_id": "1:534128897525:android:819c1a5eeb2d46f35f04bc",
         "android_client_info": {
-          "package_name": "com.zakharov.picturn"
+          "package_name": "com.shamray.pleasurepicture"
         }
       },
       "oauth_client": [
         {
-          "client_id": "502235601567-2b29bib16m0c30k2gc1lu1ifmalp628m.apps.googleusercontent.com",
+          "client_id": "534128897525-grralgvtahj7bsg548s0uc2ip23511pf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.zakharov.picturn",
-            "certificate_hash": "48e5babea8b3d24fc5359d6624f7d9e108c79d95"
+            "package_name": "com.shamray.pleasurepicture",
+            "certificate_hash": "f2377fd98bb6922b77bfbc3a156e7e022ea0ea36"
           }
         },
         {
-          "client_id": "502235601567-g9dpukhabe6pgvldoij7bm01b247ubpu.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.zakharov.picturn",
-            "certificate_hash": "c28e72ad990ff078210b2d7f51be505c1d0e2144"
-          }
-        },
-        {
-          "client_id": "502235601567-3s19nauusa9gps6nq1m24jeom04e3b2d.apps.googleusercontent.com",
+          "client_id": "534128897525-ldf04tii135rvad53vea9agaojl45112.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyATR__wsvsBLQ_IgWDc7emHsh7LoFW6hFE"
+          "current_key": "AIzaSyB7YnQvY29bc6n5XNSB9NIMIimEUm3WDwU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "502235601567-3s19nauusa9gps6nq1m24jeom04e3b2d.apps.googleusercontent.com",
+              "client_id": "534128897525-ldf04tii135rvad53vea9agaojl45112.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
