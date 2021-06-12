@@ -32,5 +32,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:534128897525:ios:235349b6b3694be65f04bc</string>
+	<key>DATABASE_URL</key>
+	<string>https://pleasurepicture-76daa-default-rtdb.europe-west1.firebasedatabase.app</string>
 </dict>
 </plist>

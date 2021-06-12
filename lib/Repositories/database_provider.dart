@@ -4,6 +4,8 @@ import 'package:picturn/Models/post.dart';
 class DatabaseProvider{
   final databaseReference = FirebaseDatabase.instance.reference();
 
+  final database = FirebaseDatabase.instance.reference();
+
   DatabaseReference savePost(Post post){
     var id = databaseReference.child('posts/').push();
     id.set(post.toJson());
@@ -15,7 +17,8 @@ class DatabaseProvider{
   }
 
   Future<List<Post>> getAllPosts() async {
-    DataSnapshot dataSnapshot = await databaseReference.child('posts/').once();
+    DatabaseReference ref =  databaseReference.child('posts/');
+    DataSnapshot dataSnapshot = await ref.once();
     List<Post> posts = [];
     print('qqqqqqqqqqqqqqqq');
     if (dataSnapshot.value != null) {
