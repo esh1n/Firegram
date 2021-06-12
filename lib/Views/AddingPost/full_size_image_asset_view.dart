@@ -12,8 +12,7 @@ class FullSizeImageAssetView extends StatelessWidget {
       builder: (context, galleryListViewModel, _) {
         return galleryListViewModel.currentIndex != null
             ? FutureBuilder<File>(
-                future: galleryListViewModel
-                    .imageAssets[galleryListViewModel.currentIndex].file,
+                future: galleryListViewModel.getCurrentFile(),
                 builder: (_, snapshot) {
                   final file = snapshot.data;
                   if (file == null)

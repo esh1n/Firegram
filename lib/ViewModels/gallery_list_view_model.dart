@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:photo_manager/photo_manager.dart';
+import 'dart:io';
 
 class GalleryListViewModel extends ChangeNotifier {
   List<AssetEntity> imageAssets = [];
@@ -24,4 +25,6 @@ class GalleryListViewModel extends ChangeNotifier {
   }
 
   int get currentIndex => _currentIndex;
+
+  Future<File> getCurrentFile() async => imageAssets[currentIndex].file;
 }

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gallery_saver/gallery_saver.dart';
@@ -33,6 +34,13 @@ class _AddingPostView extends State<AddingPostView> {
   void initState() {
     this.galleryListViewModel = GalleryListViewModel();
     this._fetchImageGalleryAssets();
+  }
+
+  void onUploadPost() async {
+    print('add post');
+    //final file = await this.galleryListViewModel.getCurrentFile();
+    Post post = Post(Profile('Сергей Александрович', avatarImagePath: 'res/images/ava2.jpg'),  DateTime.now(), 'res/images/3.jpg', 555);
+    this.addingPostViewModel.addPost(post);
   }
 
   @override
@@ -80,18 +88,7 @@ class _AddingPostView extends State<AddingPostView> {
                         splashRadius: 20,
                         icon: Icon(Icons.arrow_upward),
                         iconSize: 30,
-                        onPressed: () {
-                          print('add post');
-                          Post post = Post(Profile('John', avatarImagePath: 'res/images/ava1.jpg'), DateTime.now(), 'res/images/1.jpg', 777);
-                          Post post2 = Post(Profile('Ilon'), DateTime.now(), 'res/images/2.jpg', 666);
-                          Post post3 = Post(Profile('Сергей Александрович', avatarImagePath: 'res/images/ava2.jpg'),  DateTime.now(), 'res/images/3.jpg', 555);
-                          this.addingPostViewModel.addPost(post);
-                          this.addingPostViewModel.addPost(post2);
-                          this.addingPostViewModel.addPost(post3);
-
-                          //this._fetchImageGalleryAssets();
-                          //print(this.galleryListViewModel.imageAssets.toString());
-                        },
+                        onPressed: () =>onUploadPost(),
                       ),
                     ],
                   ),
