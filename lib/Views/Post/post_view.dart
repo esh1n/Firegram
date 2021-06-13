@@ -24,6 +24,14 @@ class _PostView extends State<PostView> {
 
   _PostView(this.postViewModel);
 
+  Image getIconByPath(String url) {
+    if(url.startsWith("res/images/")){
+      return Image.asset(url);
+    }else{
+      return Image.network(url);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
@@ -46,7 +54,7 @@ class _PostView extends State<PostView> {
                 minScale: 1, // optional
                 maxScale: 3.0, // optional
                 twoTouchOnly: true,
-                child: Image.asset(this.postViewModel.getImagePath)),
+                child: getIconByPath(this.postViewModel.getImagePath)),
                 //child: Image.network(this.postViewModel.getImagePath)),
             Container(
                 child: SizedBox(

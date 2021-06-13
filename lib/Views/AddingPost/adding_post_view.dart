@@ -38,9 +38,8 @@ class _AddingPostView extends State<AddingPostView> {
 
   void onUploadPost() async {
     print('add post');
-    //final file = await this.galleryListViewModel.getCurrentFile();
-    Post post = Post(Profile('Сергей Александрович', avatarImagePath: 'res/images/ava2.jpg'),  DateTime.now(), 'res/images/3.jpg', 555);
-    this.addingPostViewModel.addPost(post);
+    var file = await this.galleryListViewModel.getCurrentFile();
+    this.addingPostViewModel.addFilePost(file);
   }
 
   @override

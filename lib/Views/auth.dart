@@ -6,7 +6,7 @@ final GoogleSignIn googleSignIn = GoogleSignIn();
 
 Future<UserCredential> signInWithGoogle() async {
   // Trigger the authentication flow
-  final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
+  final GoogleSignInAccount googleUser = await googleSignIn.signIn();
 
   // Obtain the auth details from the request
   final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
@@ -19,6 +19,12 @@ Future<UserCredential> signInWithGoogle() async {
 
   // Once signed in, return the UserCredential
   return await FirebaseAuth.instance.signInWithCredential(credential);
+}
+
+String getCurrentUserId() {
+  var email = googleSignIn.currentUser.email;
+  String fallback = "ivan@gmail.com";
+  return (email==null||email.isEmpty) ? fallback : email;
 }
 
 void signOutGoogle() async {
