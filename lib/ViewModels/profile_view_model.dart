@@ -5,12 +5,10 @@ class ProfileViewModel {
 
   ProfileViewModel(this.profile);
 
-  String get getAvatarImagePath =>
-      this.profile.avatarImagePath ?? 'res/images/no_avatar.png';
 
-  bool equalProfiles(Profile profile) {
-    return this.profile.nickName == profile.nickName;
-  }
+  String get getAvatarImagePath =>
+      this.profile.avatarImageUrl ?? 'res/images/no_avatar.png';
+
 
   int fetchCountPosts() {
     //TODO метод репозитория, которому кидаем профиль

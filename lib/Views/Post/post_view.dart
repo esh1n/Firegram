@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:picturn/ViewModels/post_view_model.dart';
 import 'package:picturn/Views/CustomWidgets/zoom_overlay.dart';
 import 'package:picturn/Views/Post/post_title_view.dart';
+import 'package:picturn/Views/Utils.dart';
 
 import 'like_view.dart';
 
@@ -23,14 +24,6 @@ class _PostView extends State<PostView> {
   final FlareControls flareControls = FlareControls();
 
   _PostView(this.postViewModel);
-
-  Image getIconByPath(String url) {
-    if(url.startsWith("res/images/")){
-      return Image.asset(url);
-    }else{
-      return Image.network(url);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +47,7 @@ class _PostView extends State<PostView> {
                 minScale: 1, // optional
                 maxScale: 3.0, // optional
                 twoTouchOnly: true,
-                child: getIconByPath(this.postViewModel.getImagePath)),
-                //child: Image.network(this.postViewModel.getImagePath)),
+                child: UiUtils.getIconByPath(this.postViewModel.getImagePath)),
             Container(
                 child: SizedBox(
                     width: 80,

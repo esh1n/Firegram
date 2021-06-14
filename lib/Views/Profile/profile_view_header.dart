@@ -22,7 +22,7 @@ class ProfileViewHeader implements SliverPersistentHeaderDelegate {
     return Stack(
       fit: StackFit.expand,
       children: [
-        Image.asset(
+        Image.network(
           this.profileViewModel.getAvatarImagePath,
           fit: BoxFit.cover,
         ),

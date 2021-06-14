@@ -10,14 +10,12 @@ import 'package:picturn/Views/auth.dart';
 class AddingPostViewModel{
   var postRepository = PostRepository();
 
-  Future<void> addPost(Post post) async{
-    postRepository.savePost(post);
-  }
-
   Future<void> addFilePost(File imageFile) async{
     var imageUrl = await uploadImageToFirebase(imageFile);
-    var userId = getCurrentUserId();
-    Post post = Post(Profile(userId, avatarImagePath: 'res/images/ava2.jpg'),  DateTime.now(), imageUrl, 0);
+    var user = getCurrentUser();
+    var userId = (user!=null)?user.email:"eshinsergey@gmail.com";
+    var avatarUrl = (user!=null)?user.photoUrl:"";
+    Post post = Post(Profile(userId, avatarImageUrl: avatarUrl), DateTime.now(),DateTime.now().millisecondsSinceEpoch , imageUrl, 0);
     postRepository.savePost(post);
   }
 

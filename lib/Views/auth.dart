@@ -21,10 +21,8 @@ Future<UserCredential> signInWithGoogle() async {
   return await FirebaseAuth.instance.signInWithCredential(credential);
 }
 
-String getCurrentUserId() {
-  var email = googleSignIn.currentUser.email;
-  String fallback = "ivan@gmail.com";
-  return (email==null||email.isEmpty) ? fallback : email;
+GoogleSignInAccount getCurrentUser() {
+  return googleSignIn.currentUser;
 }
 
 void signOutGoogle() async {

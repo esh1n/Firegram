@@ -14,17 +14,14 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RuntimeData.currentOpenProfileViewModel.profile =
-        this.profileViewModel.profile;
+    RuntimeData.currentOpenProfile = this.profileViewModel.profile;
     return ChangeNotifierProvider(
-        create: (context) => PostListViewModel(PostListType.profile,
-            profileViewModel: this.profileViewModel),
+        create: (context) => PostListViewModel(PostListType.profile, profileViewModel: this.profileViewModel),
         child: Scaffold(
             body: Stack(
           children: <Widget>[
             NestedScrollView(
-                headerSliverBuilder:
-                    (BuildContext context, bool innerBoxIsScrolled) {
+                headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
                   return <Widget>[
                     SliverPersistentHeader(
                       delegate: ProfileViewHeader(
@@ -39,16 +36,14 @@ class ProfileView extends StatelessWidget {
             Container(
                 alignment: Alignment.topRight,
                 padding: EdgeInsets.fromLTRB(0, 40, 20, 0),
-                child: !(RuntimeData.currentUserProfileViewModel
-                        .equalProfiles(this.profileViewModel.profile))
+                child: !(RuntimeData.currentUserProfile.isSameById(this.profileViewModel.profile))
                     ? CircleAvatar(
                         backgroundColor: Colors.white,
                         child: IconButton(
                             icon: Icon(Icons.arrow_back, color: Colors.black),
                             onPressed: () {
                               Navigator.pop(context);
-                              RuntimeData.currentOpenProfileViewModel.profile =
-                                  null;
+                              RuntimeData.currentOpenProfile = null;
                             }))
                     : null)
           ],

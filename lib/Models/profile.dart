@@ -1,6 +1,10 @@
 class Profile {
   String nickName;
-  String avatarImagePath;
+  String avatarImageUrl;
 
-  Profile(this.nickName, {this.avatarImagePath});
+  Profile(this.nickName, {this.avatarImageUrl});
+
+  bool isSameById(Profile profile){
+    return profile.nickName == nickName;
+  }
 }

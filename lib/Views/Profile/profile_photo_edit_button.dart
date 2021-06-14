@@ -14,8 +14,7 @@ class ProfilePhotoEditButton extends StatelessWidget {
    return Container(
         alignment: Alignment.bottomRight,
         padding: EdgeInsets.fromLTRB(0, 0, 20, 20),
-        child: RuntimeData.currentUserProfileViewModel
-            .equalProfiles(this.profileViewModel.profile)
+        child: RuntimeData.currentUserProfile.isSameById(profileViewModel.profile)
             ? CircleAvatar(
             backgroundColor: Colors.white,
             child: IconButton(

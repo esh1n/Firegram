@@ -7,14 +7,19 @@ import 'package:picturn/ViewModels/profile_view_model.dart';
 enum PostListType { all, profile }
 
 class PostListViewModel extends ChangeNotifier {
-  // ignore: deprecated_member_use
-  List<PostViewModel> postViewModels = List<PostViewModel>();
+  List<PostViewModel> postViewModels = <PostViewModel>[];
   PostListType _type;
   ProfileViewModel profileViewModel;
 
-  PostListViewModel(this._type, {this.profileViewModel});
+  PostListViewModel(this._type, {this.profileViewModel}){
+    fetchPosts();
+  }
 
   Future<void> fetchPosts() async {
+    updatePosts(await loadPosts());
+  }
+
+  Future<List<Post>> loadPosts() async{
     List<Post> results;
 
     switch (this._type) {
@@ -26,13 +31,24 @@ class PostListViewModel extends ChangeNotifier {
             .fetchProfilePosts(this.profileViewModel.profile.nickName);
         break;
     }
-    this.postViewModels +=
-        results.map((item) => PostViewModel(post: item)).toList();
-    notifyListeners();
+    return results;
   }
 
-  refreshPosts() {
-    this.postViewModels.clear();
-    notifyListeners();
+  Future<void> fetchLatestPost() async {
+    List<Post> results;
+    if (postViewModels.isEmpty) {
+      results = await PostRepository().fetchPosts();
+    } else {
+      results = await PostRepository()
+          .fetchLatestPosts(postViewModels.last.getTimestamp);
+    }
+    updatePosts(results);
+  }
+
+  void updatePosts(List<Post> posts) {
+    if (posts != null && posts.isNotEmpty) {
+      this.postViewModels += posts.map((item) => PostViewModel(post: item)).toList();
+      notifyListeners();
+    }
   }
 }

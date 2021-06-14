@@ -19,12 +19,10 @@ class PostTitleView extends StatelessWidget {
           children: <Widget>[
             GestureDetector(
                 onTap: () {
-                  if (RuntimeData.currentUserProfileViewModel
-                      .equalProfiles(this.postViewModel.getProfile)) return;
+                  if (RuntimeData.currentUserProfile.isSameById(postViewModel.getProfile)) return;
 
-                  if (RuntimeData.currentOpenProfileViewModel.profile != null &&
-                      RuntimeData.currentOpenProfileViewModel
-                          .equalProfiles(this.postViewModel.getProfile)) return;
+                  if (RuntimeData.currentOpenProfile != null &&
+                      RuntimeData.currentOpenProfile.isSameById(this.postViewModel.getProfile)) return;
 
                   Navigator.push(
                       context,
@@ -36,7 +34,7 @@ class PostTitleView extends StatelessWidget {
                   radius: 20.0,
                   backgroundColor: Colors.black,
                   backgroundImage:
-                      AssetImage(this.postViewModel.getAvatarImagePath),
+                  NetworkImage(this.postViewModel.getAvatarImagePath),
                 )),
             Padding(
                 padding: EdgeInsets.only(left: 10, top: 0, right: 0, bottom: 0),

@@ -1,18 +1,13 @@
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:photo_manager/photo_manager.dart';
-import 'package:picturn/Models/post.dart';
-import 'package:picturn/Models/profile.dart';
 import 'package:picturn/ViewModels/adding_post_view_model.dart';
 import 'package:picturn/ViewModels/gallery_list_view_model.dart';
-import 'package:picturn/ViewModels/post_view_model.dart';
 import 'package:picturn/Views/AddingPost/full_size_image_asset_view.dart';
 import 'package:picturn/Views/AddingPost/image_asset_gallery_view.dart';
 import 'package:picturn/Views/CustomWidgets/stroke_text.dart';
@@ -29,9 +24,9 @@ class _AddingPostView extends State<AddingPostView> {
   GalleryListViewModel galleryListViewModel;
   final AddingPostViewModel addingPostViewModel = AddingPostViewModel();
 
-
   @override
   void initState() {
+    super.initState();
     this.galleryListViewModel = GalleryListViewModel();
     this._fetchImageGalleryAssets();
   }
@@ -39,7 +34,10 @@ class _AddingPostView extends State<AddingPostView> {
   void onUploadPost() async {
     print('add post');
     var file = await this.galleryListViewModel.getCurrentFile();
-    this.addingPostViewModel.addFilePost(file);
+    this.addingPostViewModel.addFilePost(file).then((value) {
+      var snackBar = SnackBar(content: Text('Картинка загружена!'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    });
   }
 
   @override
@@ -87,7 +85,7 @@ class _AddingPostView extends State<AddingPostView> {
                         splashRadius: 20,
                         icon: Icon(Icons.arrow_upward),
                         iconSize: 30,
-                        onPressed: () =>onUploadPost(),
+                        onPressed: () => onUploadPost(),
                       ),
                     ],
                   ),
@@ -128,10 +126,13 @@ class _AddingPostView extends State<AddingPostView> {
     );
     this.galleryListViewModel.currentIndex = 0;
 
-    setState(() { this.galleryListViewModel.imageAssets = recentAssets
-        .where((element) => element.type == AssetType.image)
-        .toList();
-    print('fetch count '+this.galleryListViewModel.imageAssets.length.toString());});
+    setState(() {
+      this.galleryListViewModel.imageAssets = recentAssets
+          .where((element) => element.type == AssetType.image)
+          .toList();
+      print('fetch count ' +
+          this.galleryListViewModel.imageAssets.length.toString());
+    });
   }
 
   getCameraImage() async {
@@ -143,12 +144,13 @@ class _AddingPostView extends State<AddingPostView> {
     String albumName = 'PicturnMedia';
     File tmpFile = File(imageFile.path);
     print('полный путь картинки:   ' + tmpFile.path.toString());
-    print('перед сохранением count '+this.galleryListViewModel.imageAssets.length.toString());
-    final saveResult = await GallerySaver.saveImage(tmpFile.path, albumName: albumName);
+    print('перед сохранением count ' +
+        this.galleryListViewModel.imageAssets.length.toString());
+    final saveResult =
+        await GallerySaver.saveImage(tmpFile.path, albumName: albumName);
     if (saveResult == true) {
-      await Future.delayed(Duration(seconds: 5), () => this._fetchImageGalleryAssets());
+      await Future.delayed(
+          Duration(seconds: 5), () => this._fetchImageGalleryAssets());
     }
   }
-
-
 }

@@ -21,6 +21,8 @@ class PostViewModel extends ChangeNotifier {
 
   String get getImagePath => this.post.imagePath;
 
+  int get getTimestamp => this.post.timestamp;
+
   String get getAuthor => this.post.profile.nickName;
 
   DateTime get getDate => this.post.date;
@@ -28,9 +30,9 @@ class PostViewModel extends ChangeNotifier {
   Profile get getProfile => this.post.profile;
 
   String get getAvatarImagePath =>
-      (this.post.profile.avatarImagePath == null ||  this.post.profile.avatarImagePath.isEmpty)
+      (this.post.profile.avatarImageUrl == null ||  this.post.profile.avatarImageUrl.isEmpty)
       ? 'res/images/no_avatar.png'
-      : this.post.profile.avatarImagePath;
+      : this.post.profile.avatarImageUrl;
 
   int get getLikesCount => this.post.likesCount;
 }

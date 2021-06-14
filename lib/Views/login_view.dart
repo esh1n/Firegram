@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:picturn/Models/profile.dart';
+
+import '../runtime_data.dart';
 import 'auth.dart';
 import 'navigation_bar_view.dart';
 
@@ -25,16 +28,20 @@ class _BodyState extends State<Body> {
   }
 
   void click() {
-    signInWithGoogle().then(
-      (user) => {
-        this.user = user,
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => NavigationBarView(),
-          ),
-        ),
-      },
+    signInWithGoogle().then((user) => onUserGot(user));
+  }
+
+  void onUserGot(UserCredential user) {
+    this.user = user;
+    var googleUser = getCurrentUser();
+    if(googleUser!=null){
+      RuntimeData.currentUserProfile = Profile(googleUser.email,avatarImageUrl:googleUser.photoUrl);
+    }
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => NavigationBarView(),
+      ),
     );
   }
 

@@ -4,6 +4,7 @@ import 'package:picturn/Models/profile.dart';
 
 class Post {
   final String imagePath;
+  final int timestamp;
   final Profile profile;
   final DateTime date;
 
@@ -11,29 +12,27 @@ class Post {
   int likesCount;
 
   Set profileLiked = {};
-  DatabaseReference _id;
 
-  Post(this.profile, this.date, this.imagePath, this.likesCount,
+  Post(this.profile, this.date,this.timestamp, this.imagePath, this.likesCount,
       {this.isLiked = false});
-
-  void setId(DatabaseReference id) {
-    this._id = id;
-  }
 
   Map<String, dynamic> toJson() {
     return {
       'imagePath': this.imagePath,
       'nickName': this.profile.nickName,
-      'avatarImagePath': this.profile.avatarImagePath,
-      'date': formatDate(this.date, [yyyy, '-', mm, '-', dd]),
+      'avatarImagePath': this.profile.avatarImageUrl,
+      'date': dateStr(this.date),
+      'timestamp': DateTime.now().millisecondsSinceEpoch,
       'profileLiked': this.profileLiked.toList(),
     };
   }
 
+  static String  dateStr(DateTime date) => formatDate(date, [yyyy, '-', mm, '-',dd,'T',HH, ':', n, ':',ss ]);
 
   static Post createPost(record) {
     Map<String, dynamic> attributes = {
       'imagePath': '',
+      'timestamp': '',
       'nickName': '',
       'avatarImagePath': '',
       'date': '',
@@ -45,11 +44,11 @@ class Post {
     print(attributes['date']);
     Post post = new Post(
         Profile(attributes['nickName'],
-            avatarImagePath: attributes['avatarImagePath']),
+            avatarImageUrl: attributes['avatarImagePath']),
         DateTime.parse(attributes['date']),
+        attributes['timestamp'],
         attributes['imagePath'],
-        123);
-    //post.usersLiked = new Set.from(attributes['usersLiked']);
+        0);
     return post;
   }
 }

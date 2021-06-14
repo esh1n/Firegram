@@ -7,12 +7,6 @@ import 'database_provider.dart';
 class PostRepository {
   var databaseProvider = DatabaseProvider();
 
-  var postDataBase = [
-    Post(Profile('John', avatarImagePath: 'res/images/ava1.jpg'), DateTime.now(), 'res/images/1.jpg', 777),
-    Post(Profile('Ilon'), DateTime.now(), 'res/images/2.jpg', 666),
-    Post(Profile('Сергей Александрович', avatarImagePath: 'res/images/ava2.jpg'),  DateTime.now(), 'res/images/3.jpg', 555)
-  ];
-
   Future<String> downloadURLExample() async {
     return await firebase_storage.FirebaseStorage.instance
         .ref('images/4.jpg')
@@ -25,21 +19,17 @@ class PostRepository {
 
   Future<List<Post>> fetchPosts() async {
     return await this.databaseProvider.getAllPosts();
+  }
 
-    //return await Future.delayed(Duration(seconds: 0), () => postDataBase);
-
-    // return await Future.delayed(Duration(seconds: 0), () => downloadURLExample().then((value) => [
-    //   Post(Profile('John', avatarImagePath: 'res/images/ava1.jpg'), DateTime.now(), value, 777),
-    // ]));
+  Future<List<Post>> fetchLatestPosts(int timestamp) async {
+    var list = await this.databaseProvider.getLatestPosts(timestamp);
+    return list.where((post) => post.timestamp!=timestamp).toList();
   }
 
   Future<List<Post>> fetchProfilePosts(String nickName) async {
     //TODO get запрос получения постов пользователя
-    return await Future.delayed(
-        Duration(seconds: 0),
-        () => postDataBase
-            .where((element) => element.profile.nickName == nickName)
-            .toList());
+    var list = await databaseProvider.getAllPosts();
+    return list.where((post) => post.profile.nickName == nickName).toList();
   }
 
   Future<bool> sendPostLikes(

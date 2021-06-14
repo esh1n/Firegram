@@ -28,8 +28,7 @@ class _NavigationBarView extends State<NavigationBarView> {
     ),
     AddingPostView(),
     ProfileView(
-      ProfileViewModel(RuntimeData.currentUserProfileViewModel.profile),
-    ),
+        ProfileViewModel(RuntimeData.currentUserProfile)),
   ];
 
   int _currentIndex = 0;

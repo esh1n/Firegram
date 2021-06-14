@@ -1,6 +1,7 @@
+import 'Models/profile.dart';
 import 'ViewModels/profile_view_model.dart';
 
 class RuntimeData {
-  static ProfileViewModel currentUserProfileViewModel;
-  static ProfileViewModel currentOpenProfileViewModel;
+  static Profile currentUserProfile;
+  static Profile currentOpenProfile;
 }

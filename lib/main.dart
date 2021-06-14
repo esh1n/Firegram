@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:picturn/Views/AddingPost/adding_post_view.dart';
+import 'package:picturn/Views/auth.dart';
 import 'package:picturn/Views/login_view.dart';
 import 'package:picturn/onboarding.dart';
 import 'package:picturn/runtime_data.dart';
@@ -79,8 +80,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    RuntimeData.currentUserProfileViewModel = ProfileViewModel(Profile('Ilon'));
-    RuntimeData.currentOpenProfileViewModel = ProfileViewModel(null);
+    RuntimeData.currentOpenProfile = null;
 
     // Show error message if initialization failed
     if (_error) {
