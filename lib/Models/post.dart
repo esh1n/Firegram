@@ -20,6 +20,7 @@ class Post {
     return {
       'imagePath': this.imagePath,
       'nickName': this.profile.nickName,
+      'email': this.profile.email,
       'avatarImagePath': this.profile.avatarImageUrl,
       'date': dateStr(this.date),
       'timestamp': DateTime.now().millisecondsSinceEpoch,
@@ -27,13 +28,14 @@ class Post {
     };
   }
 
-  static String  dateStr(DateTime date) => formatDate(date, [yyyy, '-', mm, '-',dd,'T',HH, ':', n, ':',ss ]);
+  static String  dateStr(DateTime date) => formatDate(date, [yyyy, '-', mm, '-',dd,'T',HH, ':', nn, ':',ss ]);
 
   static Post createPost(record) {
     Map<String, dynamic> attributes = {
       'imagePath': '',
       'timestamp': '',
       'nickName': '',
+      'email': '',
       'avatarImagePath': '',
       'date': '',
       'profileLiked': [],
@@ -43,8 +45,9 @@ class Post {
 
     print(attributes['date']);
     Post post = new Post(
-        Profile(attributes['nickName'],
-            avatarImageUrl: attributes['avatarImagePath']),
+        Profile(attributes['email'],
+             attributes['avatarImagePath'],
+            attributes['nickName']),
         DateTime.parse(attributes['date']),
         attributes['timestamp'],
         attributes['imagePath'],

@@ -28,7 +28,7 @@ class PostListViewModel extends ChangeNotifier {
         break;
       case PostListType.profile:
         results = await PostRepository()
-            .fetchProfilePosts(this.profileViewModel.profile.nickName);
+            .fetchProfilePosts(this.profileViewModel.profile.email);
         break;
     }
     return results;

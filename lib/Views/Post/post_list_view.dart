@@ -19,6 +19,8 @@ class _PostListView extends State<PostListView> {
     if (_scrollController.position.pixels ==
         _scrollController.position.maxScrollExtent) {
       postListViewModel.fetchLatestPost();
+    }else if(postListViewModel.postViewModels.length<3){
+      postListViewModel.fetchLatestPost();
     }
   }
 

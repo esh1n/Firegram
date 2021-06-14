@@ -14,8 +14,9 @@ class AddingPostViewModel{
     var imageUrl = await uploadImageToFirebase(imageFile);
     var user = getCurrentUser();
     var userId = (user!=null)?user.email:"eshinsergey@gmail.com";
+    var nickName = (user!=null)?user.displayName:"eshinsergey@gmail.com";
     var avatarUrl = (user!=null)?user.photoUrl:"";
-    Post post = Post(Profile(userId, avatarImageUrl: avatarUrl), DateTime.now(),DateTime.now().millisecondsSinceEpoch , imageUrl, 0);
+    Post post = Post(Profile(userId,avatarUrl,nickName), DateTime.now(),DateTime.now().millisecondsSinceEpoch , imageUrl, 0);
     postRepository.savePost(post);
   }
 

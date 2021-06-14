@@ -37,7 +37,7 @@ class DatabaseProvider {
       dataSnapshot.value.forEach((key, value) {
         Post post = Post.createPost(value);
         posts.add(post);
-        print(post.profile.nickName);
+        print(post.profile.email);
         //print(formatDate(post.date, [yyyy, '-', mm, '-', dd]));
       });
     }
@@ -56,7 +56,7 @@ class DatabaseProvider {
       dataSnapshot.value.forEach((key, value) {
         Post post = Post.createPost(value);
         posts.add(post);
-        print(post.profile.nickName);
+        print(post.profile.email);
         //print(formatDate(post.date, [yyyy, '-', mm, '-', dd]));
       });
     }

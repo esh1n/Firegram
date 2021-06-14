@@ -29,7 +29,7 @@ class PostRepository {
   Future<List<Post>> fetchProfilePosts(String nickName) async {
     //TODO get запрос получения постов пользователя
     var list = await databaseProvider.getAllPosts();
-    return list.where((post) => post.profile.nickName == nickName).toList();
+    return list.where((post) => post.profile.email == nickName).toList();
   }
 
   Future<bool> sendPostLikes(

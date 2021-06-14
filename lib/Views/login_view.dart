@@ -35,7 +35,7 @@ class _BodyState extends State<Body> {
     this.user = user;
     var googleUser = getCurrentUser();
     if(googleUser!=null){
-      RuntimeData.currentUserProfile = Profile(googleUser.email,avatarImageUrl:googleUser.photoUrl);
+      RuntimeData.currentUserProfile = Profile(googleUser.email,googleUser.photoUrl,googleUser.displayName);
     }
     Navigator.push(
       context,
