@@ -23,7 +23,7 @@ class PostViewModel extends ChangeNotifier {
 
   int get getTimestamp => this.post.timestamp;
 
-  String get getAuthor => this.post.profile.email;
+  String get getAuthor => this.post.profile.nickName;
 
   DateTime get getDate => this.post.date;
 

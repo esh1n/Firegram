@@ -51,4 +51,9 @@ class PostListViewModel extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future<void> refresh() async{
+    postViewModels.clear();
+    fetchPosts();
+  }
 }

@@ -33,14 +33,22 @@ class _NavigationBarView extends State<NavigationBarView> {
 
   int _currentIndex = 0;
 
-  //List<Widget> listTab;
-
-  //_NavigationBarView(this.listTab);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        toolbarHeight: 40.0,
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        centerTitle: true,
+        title: const Text(
+          'Pleasure',
+          style: TextStyle(
+              color: Color.fromARGB(240, 62, 204, 224),
+              fontFamily: 'Helvetica',
+              fontSize: 30),
+        ),
+      ),
       body: IndexedStack(
         children: listTab,
         index: _currentIndex,
@@ -49,24 +57,26 @@ class _NavigationBarView extends State<NavigationBarView> {
         height: 54,
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
-          showUnselectedLabels: false,
+          selectedItemColor: Colors.white,
+          backgroundColor: Color.fromARGB(230, 62, 204, 224),
+          showUnselectedLabels: true,
           onTap: (newIndex) => setState(() => _currentIndex = newIndex),
           items: [
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.home_filled,
+                  Icons.filter,
                   size: 20,
                 ),
-                label: 'Лента'),
+                label: 'Feed'),
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.add_box_outlined,
+                  Icons.add_a_photo,
                   size: 20,
                 ),
                 label: 'Добавить'),
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.account_box,
+                  Icons.person,
                   size: 20,
                 ),
                 label: 'Профиль')

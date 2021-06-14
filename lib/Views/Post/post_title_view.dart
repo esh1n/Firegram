@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:picturn/ViewModels/post_view_model.dart';
 import 'package:picturn/ViewModels/profile_view_model.dart';
 import 'package:picturn/Views/Profile/profile_view.dart';
+import 'package:picturn/Views/Utils.dart';
 import 'package:picturn/runtime_data.dart';
 
 class PostTitleView extends StatelessWidget {
@@ -33,8 +34,7 @@ class PostTitleView extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 20.0,
                   backgroundColor: Colors.black,
-                  backgroundImage:
-                  NetworkImage(this.postViewModel.getAvatarImagePath),
+                  backgroundImage:UiUtils.getImageByPath(this.postViewModel.getAvatarImagePath)
                 )),
             Padding(
                 padding: EdgeInsets.only(left: 10, top: 0, right: 0, bottom: 0),

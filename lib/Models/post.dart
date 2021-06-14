@@ -1,5 +1,4 @@
 import 'package:date_format/date_format.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:picturn/Models/profile.dart';
 
 class Post {
@@ -13,12 +12,13 @@ class Post {
 
   Set profileLiked = {};
 
-  Post(this.profile, this.date,this.timestamp, this.imagePath, this.likesCount,
+  Post(this.profile, this.date, this.timestamp, this.imagePath, this.likesCount,
       {this.isLiked = false});
 
   Map<String, dynamic> toJson() {
     return {
       'imagePath': this.imagePath,
+      'likesCount': this.likesCount,
       'nickName': this.profile.nickName,
       'email': this.profile.email,
       'avatarImagePath': this.profile.avatarImageUrl,
@@ -28,7 +28,8 @@ class Post {
     };
   }
 
-  static String  dateStr(DateTime date) => formatDate(date, [yyyy, '-', mm, '-',dd,'T',HH, ':', nn, ':',ss ]);
+  static String dateStr(DateTime date) =>
+      formatDate(date, [yyyy, '-', mm, '-', dd, 'T', HH, ':', nn, ':', ss]);
 
   static Post createPost(record) {
     Map<String, dynamic> attributes = {
@@ -38,6 +39,7 @@ class Post {
       'email': '',
       'avatarImagePath': '',
       'date': '',
+      'likesCount': '',
       'profileLiked': [],
     };
 
@@ -45,13 +47,12 @@ class Post {
 
     print(attributes['date']);
     Post post = new Post(
-        Profile(attributes['email'],
-             attributes['avatarImagePath'],
+        Profile(attributes['email'], attributes['avatarImagePath'],
             attributes['nickName']),
         DateTime.parse(attributes['date']),
         attributes['timestamp'],
         attributes['imagePath'],
-        0);
+        attributes['likesCount']);
     return post;
   }
 }
