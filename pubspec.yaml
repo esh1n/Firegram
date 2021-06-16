@@ -79,7 +79,7 @@ flutter_native_splash:
 flutter_icons:
   ios: true
   android: true
-  image_path_ios: res/images/picturn_logo_ios.jpg
+  image_path_ios: res/images/picturn_logo.png
   image_path_android: res/images/picturn_logo.png
   adaptive_icon_background: res/images/picturn_logo_background.png
   adaptive_icon_foreground: res/images/picturn_logo_foreground.png
